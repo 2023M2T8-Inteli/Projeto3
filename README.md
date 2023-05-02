@@ -21,17 +21,6 @@
 
 Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solução proposta).
 
-|--> documentos<br>
-  &emsp;| --> outros <br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.pdf<br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.docx<br>
-|--> imagens<br>
-|--> src<br>
-  &emsp;|--> Backend<br>
-  &emsp;|--> Frontend<br>
-| readme.md<br>
-| license.txt
-
 Dentre os arquivos presentes na raiz do projeto, definem-se:
 
 - <b>readme.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
