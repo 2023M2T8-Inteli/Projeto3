@@ -19,7 +19,7 @@
 
 ## 📝 Descrição
 
-Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solução proposta).
+Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solução proposta).	
 
 Dentre os arquivos presentes na raiz do projeto, definem-se:
 
