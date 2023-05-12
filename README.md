@@ -12,7 +12,7 @@
 - <a href="https://www.linkedin.com/in/pedro-henrique-cruz-178a62227/">Pedro Cruz</a>
 - <a href="https://www.linkedin.com/in/enzo-boccia-pagliara-30379a267/">Enzo Boccia</a>
 - <a href="https://www.linkedin.com/in/sophianobrega/">Sophia Nóbrega</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 4</a> 
+- <a href="https://www.linkedin.com/in/victorbarq/">Ólin Costa</a> 
 - <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 5</a>
 - <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 6</a> 
 - <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 7</a>
