@@ -29,7 +29,6 @@ app.listen(port, () => {
 			}
 			res.json(rows);
 			});
-			close(db);
 	  });
 	  app.get('/vagao/tipoF', (req, res) => {
 		db.all('SELECT * FROM vagao WHERE tipo_vagao = "f"', [], (err, rows) => { 
