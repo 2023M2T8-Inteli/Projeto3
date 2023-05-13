@@ -23,7 +23,8 @@ app.listen(port, () => {
 			});
 	  });
 	  app.get('/vagao/tipoE', (req, res) => {
-		db.all('SELECT * FROM vagao WHERE tipo_vagao = "e"', [], (err, rows) => {
+		const get = 'SELECT * FROM vagao WHERE tipo_vagao = "e"';
+		db.all(get, [], (err, rows) => {
 		  if (err) {
 				console.error(err.message);
 			}
@@ -31,7 +32,8 @@ app.listen(port, () => {
 			});
 	  });
 	  app.get('/vagao/tipoF', (req, res) => {
-		db.all('SELECT * FROM vagao WHERE tipo_vagao = "f"', [], (err, rows) => { 
+		const get2 = 'SELECT * FROM vagao WHERE tipo_vagao = "f"';
+		db.all(get2, [], (err, rows) => { 
 		  if (err) {
 				console.error(err.message);
 			}
@@ -40,8 +42,8 @@ app.listen(port, () => {
 			});
 	  });
 	  app.post('/inserirVagao', (req, res) => { 
-		const xD = 'INSERT INTO vagao (placa, tipo_vagao) VALUES (?, ?)';
-		db.run(xD, [req.body.placa, req.body.tipo_vagao], (err) => {
+		const insert = 'INSERT INTO vagao (placa, tipo_vagao) VALUES (?, ?)';
+		db.run(insert, [req.body.placa, req.body.tipo_vagao], (err) => {
 		  if (err) {
 			console.error(err.message);
 			res.status(500).json({ error: 'Failed to insert row' });
@@ -50,3 +52,26 @@ app.listen(port, () => {
 		  }
 		});
 	  });
+	  app.put('/atualizarVagao', (req, res) => {
+		const update = 'UPDATE vagao SET tipo_vagao = ? WHERE placa = ?';
+		db.run(update, [req.body.tipo_vagao, req.body.placa], (err) => {
+		  if (err) {
+			console.error(err.message);
+			res.status(500).json({ error: 'Failed to update row' });
+		  } else {
+			res.status(200).json({ message: 'Row updated successfully' });
+		  }
+		});	
+	 });
+	 app.delete('/deletarVagao', (req, res) => {
+		const del = 'DELETE FROM vagao WHERE placa = ?';
+		db.run(del, [req.body.placa], (err) => {
+			if (err) {
+				console.error(err.message);
+				res.status(500).json({ error: 'Failed to delete row' });
+		  	} else {
+				res.status(200).json({ message: 'Row deleted successfully' });
+		  }
+		});
+	  });
+				
