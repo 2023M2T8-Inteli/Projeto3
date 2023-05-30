@@ -74,4 +74,24 @@ app.listen(port, () => {
 		  }
 		});
 	  });
-				
+	  app.post('/inserirChoque', (req, res) => { 
+		const insert = 'INSERT INTO choque (id_choque, velocidade, pg, forca_maxima, act, placa, id_ponto, tipo_choque, hora, dia) VALUES (?,?,?,?,?,?,?,?,?,?)';
+		db.run(insert, [req.body.id_choque, req.body.velocidade, req.body.pg, req.body.forca_maxima, req.body.act, req.body.placa, req.body.id_ponto, req.body.tipo_choque, req.body.hora, req.body.dia], (err) => {
+		  if (err) {
+			console.error(err.message);
+			res.status(500).json({ error: 'Failed to insert row' });
+		  } else {
+			res.status(201).json({ message: 'Row inserted successfully' });
+		  }
+		});
+	  });
+	  app.get('/choques', (req, res) => {
+		const get2 = 'SELECT * FROM choque ';
+		db.all(get2, [], (err, rows) => { 
+		  if (err) {
+				console.error(err.message);
+			}
+			res.json(rows);
+			
+			});
+		});
