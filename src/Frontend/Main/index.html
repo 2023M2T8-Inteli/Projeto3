@@ -28,6 +28,7 @@ crossorigin=""></script>
         href="../Home/index.html"
       >
         <img
+          class="w-50 mt-2 ms-5"
           src= "../static/logo_azul2.svg"
           alt="logo"
           style="width: 200px"
@@ -89,19 +90,93 @@ crossorigin=""></script>
       </div>
     </nav>
 
-    <!--Imagem do background-->
-    <container-fluid>
-      <div class="z-n1 bg-img position-absolute bottom-0 end-0">
-        <img
-          src="../static/grafismoMain.svg"
-          alt="Logo"
-          style="position: fixed; bottom: -200px; left: 0px"
-        />
-      </div>
-    </container-fluid>
+    <div class="container">
+      <div class="row mt-5 justify-content-center">
+        <div class="col-4">
+          <p
+                class="text-justify text-center me-3"
+                style="
+                  font-weight: 400;
+                  font-size: 32px;
+                  line-height: 39px;
 
-    <!--Mapa-->
-    <div id="map"></div>
+                  color: #3c3c3c;
+                "
+              >
+                Aqui estão os pontos críticos, Valmir
+              </p>
+        </div>
+
+
+
+
+        <!--Campo de Teste-->
+        <div class="col-2">
+          <div class="form-outline">
+            <input type="text" id="placa" class="form-control form-control-lg" style="background: #FFFFFF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 24px;"/>
+          </div>
+        </div>
+
+        <div class="col-1">
+          <button type="button" class="btn btn-info btn-lg" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 24px;">Buscar</button>
+        </div>
+
+
+
+
+
+        <div class="col-2">
+          <div class="dropdown">
+            <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: #FFFFFF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 24px;">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="dropdown">
+            <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: #FFFFFF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 24px;">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!--Mapa-->
+        <div class="col d-flex justify-content-evenly mt-5">
+          <div id="map" width="900px"
+          height="900px"
+          style="border-radius: 25px;
+          box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);"></div>
+        </div>
+
+      <!--Imagem do background-->
+        <div class="z-n1 bg-img position-absolute bottom-0 end-0">
+          <img
+            src="../static/grafismoMain.svg"
+            alt="Logo"
+            style="position: fixed; bottom: -200px; left: 0px"
+          />
+        </div>
+      </div>
+
+    
 
     <!--Incluindo bootstrap-->
     <script
@@ -110,8 +185,8 @@ crossorigin=""></script>
       crossorigin="anonymous"
     ></script>
         <style> 
-          #map { height: 360px;
-          width: 700px; } 
+          #map { height: 500px;
+          width: 900px; } 
           
           </style>
     <div id="map">
