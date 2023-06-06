@@ -3,6 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 const DBPATH = 'database.db';
 const app = express();
 const port = 9696;
+const hostname = 'localhost';
 const db = new sqlite3.Database((DBPATH), (err) => {
 if (err){
 	console.error(err.message);
@@ -10,9 +11,11 @@ if (err){
 	console.log('Connected to the Database. ');
 }});
    
+app.use(express.static("../frontend/Main"));
+app.use(express.static('/static'));
 app.use(express.json());
-app.listen(port, () => {
-	console.log(`Server listening on port ${port}`);
+app.listen(port, hostname, () => {
+	console.log(`Server listening on http://${hostname}:${port}/`);
 	});
 	app.get('/vagao', (req, res) => {
 		db.all('SELECT * FROM vagao', [], (err, rows) => {
@@ -93,5 +96,20 @@ app.listen(port, () => {
 			}
 			res.json(rows);
 			
+			});
+		});
+		app.post('/choqueVagao', (req, res) => {
+			const select = 'SELECT * FROM choque WHERE placa = ?';
+			db.all(select, [req.body.placa], (err, rows) => {
+				if (err) {
+					console.error(err.message);
+				} else {
+					if (rows.length > 0) {
+						console.log(rows);
+						res.status(200).json({rows});
+					} else {
+						res.status(401).json({ message: 'Login failed' });
+					}
+				}
 			});
 		});
