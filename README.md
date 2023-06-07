@@ -63,31 +63,23 @@ Isso instalará todas as dependências definidas no arquivo <b>package.json</b> 
 ```sh
 npm start
 ```
-5. Agora você pode acessar a aplicação através do link http://localhost:1234/
-6. O servidor está online.
-
-
-```
-Alunos inteli (remover essa observação do readme.md após leitura e execução):
-
-1. Certifique-se que há um arquivo "package.json" na pasta backend do projeto.
-
-2. Dentro deste arquivo, encontre a propriedade "scripts", e adicione um atributo de nome "start"
-com o valor "node <CAMINHO_DO_ARQUIVO_DO_SERVIDOR>." Atenção: "<CAMINHO_DO_ARQUIVO_DO_SERVIDOR>" 
-deve ser substituído pelo caminho para o arquivo principal da aplicação, utilizado para subir o
-servidor. Por exemplo, se o arquivo utilizado para subir o servidor é "app.js", o atributo start
-deve possuir o valor "node app.js".
-
-3. No arquivo utilizado para subir a aplicação, defina a porta padrão de execução para "1234".
-````
+4. Agora você pode acessar a aplicação através do link http://localhost:3000/
+5. O servidor está online.
 
 ## 🗃 Histórico de lançamentos
 
-* 0.2.1 - 25/01/2022
-    * Atualização de documentos (código do módulo permanece inalterado).
-* 0.2.0 - 15/01/2022
-    * Remove `setDefaultXYZ()`
-    * Adiciona `init()`
+* 0.0.1 - 28/04/2023
+    * Estudo de mercado (SWOT, Matriz de Risco e 5 Forças de Porter)
+    * Criação de Wireframes
+    * Idealização do projeto 
+    * Apresentação Sprint 1 para o IPT 
+
+* 0.0.2 - 14/05/2023
+    * Estruturação da tabela de Banco de Dados 
+    * Relatórios dos Endpoints 
+    * Documentação da API 
+    * Apresentação Sprint 2 para o IPT
+
 * 0.1.1 - 11/01/2022
     * Crash quando chama `baz()`
 * 0.1.0 - 10/01/2022
