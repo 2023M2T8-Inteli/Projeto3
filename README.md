@@ -19,7 +19,9 @@
 
 ## 📝 Descrição
 
-Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solução proposta).	
+O IPT possui uma área de pesquisa voltada para ferrovias, a qual realiza um projeto de coleta de dados do percurso de trens para algumas empresas clientes. No final do processo de coleta e tratamento dos dados, é produzido um relatório extremamente técnico e extenso contendo os resultados. No entanto, esse formato atual tem gerado diversas complicações com diferentes facetas. De um lado, os stakeholders possuem agendas extremamente apertadas e, portanto, não têm o tempo necessário para extrair dos relatórios os dados que eles precisam para realizar seus trabalhos de forma apropriada. Por outro lado, existem funcionários que necessitam de certas informações contidas no relatório, mas que simplesmente não possuem o conhecimento técnico necessário para extrair essas informações. Em suma, os relatórios no modelo atual estão prejudicando a eficiência da conexão entre o IPT e seus clientes.
+
+Portanto, o objetivo central do projeto é criar uma aplicação que forneça informações sobre eventos registrados em determinados trajetos ferroviários, enfatizando pontos críticos e essenciais, tornando mais fácil o acesso e interpretação das informações. Portanto, será dividido em duas vertentes: uma com foco macro visando atingir pessoas não técnicas e outra direcionada a pessoas mais técnicas. 
 
 Dentre os arquivos presentes na raiz do projeto, definem-se:
 
