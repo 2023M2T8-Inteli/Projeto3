@@ -23,6 +23,19 @@ O IPT possui uma área de pesquisa voltada para ferrovias, a qual realiza um pro
 
 Portanto, o objetivo central do projeto é criar uma aplicação que forneça informações sobre eventos registrados em determinados trajetos ferroviários, enfatizando pontos críticos e essenciais, tornando mais fácil o acesso e interpretação das informações. Portanto, será dividido em duas vertentes: uma com foco macro visando atingir pessoas não técnicas e outra direcionada a pessoas mais técnicas. 
 
+## 📁 Estrutura de pastas
+
+|--> documentos<br>
+  &emsp;| --> outros <br>
+  &emsp;| T(8)_G(2)_V(1.0)_Web_application_document.pdf<br>
+  &emsp;| T(8)_G(2)_V(1.0)_Web_application_document.docx<br>
+|--> imagens<br>
+|--> src<br>
+  &emsp;|--> Backend<br>
+  &emsp;|--> Frontend<br>
+| readme.md<br>
+| license.txt
+
 Dentre os arquivos presentes na raiz do projeto, definem-se:
 
 - <b>readme.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
