@@ -9,10 +9,14 @@ function acharChoquePlaca(){
         headers: {"Content-type": "application/json"}
     })
     .then(response => response.json())
-    .catch(err => console.log(err))
+    .then(data => {
+        var resultElement = document.getElementById('result');
+        resultElement.textContent = JSON.stringify(data); // Atualiza o conteúdo do elemento com a resposta recebida
+    })
+    .catch(err => console.log(err));
 }
 
-function send2() {
+function send2() { 
     console.log('Botao2 funcionou')
     var user = {
         email: document.getElementById('email').value,

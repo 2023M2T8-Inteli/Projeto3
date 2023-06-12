@@ -12,20 +12,19 @@ if (err){
 }});
    
 app.use(express.static("../frontend/Main"));
-app.use(express.static('/static'));
 app.use(express.json());
-app.listen(port, hostname, () => {
+app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servidor
 	console.log(`Server listening on http://${hostname}:${port}/`);
 	});
-	app.get('/vagao', (req, res) => {
-		db.all('SELECT * FROM vagao', [], (err, rows) => {
+	app.get('/vagao', (req, res) => { // Aqui realizo a consulta para obter todos os vagões
+		db.all('SELECT * FROM vagao', [], (err, rows) => { 
 		  if (err) {
 				console.error(err.message);
 			}
 			res.json(rows);
 			});
 	  });
-	  app.get('/vagao/tipoE', (req, res) => {
+	  app.get('/vagao/tipoE', (req, res) => { // Aqui realizo a consulta para obter todos os vagões de tipo 'E'
 		const get = 'SELECT * FROM vagao WHERE tipo_vagao = "e"';
 		db.all(get, [], (err, rows) => {
 		  if (err) {
@@ -34,7 +33,7 @@ app.listen(port, hostname, () => {
 			res.json(rows);
 			});
 	  });
-	  app.get('/vagao/tipoF', (req, res) => {
+	  app.get('/vagao/tipoF', (req, res) => { // Aqui realizo a consulta para obter todos os vagões de tipo 'F'
 		const get2 = 'SELECT * FROM vagao WHERE tipo_vagao = "f"';
 		db.all(get2, [], (err, rows) => { 
 		  if (err) {
@@ -44,7 +43,7 @@ app.listen(port, hostname, () => {
 			
 			});
 	  });
-	  app.post('/inserirVagao', (req, res) => { 
+	  app.post('/inserirVagao', (req, res) => {  // Aqui realizo a inserção de um novo vagão
 		const insert = 'INSERT INTO vagao (placa, tipo_vagao) VALUES (?, ?)';
 		db.run(insert, [req.body.placa, req.body.tipo_vagao], (err) => {
 		  if (err) {
@@ -55,7 +54,7 @@ app.listen(port, hostname, () => {
 		  }
 		});
 	  });
-	  app.put('/atualizarVagao', (req, res) => {
+	  app.put('/atualizarVagao', (req, res) => { // Aqui realizo a atualização de um vagão
 		const update = 'UPDATE vagao SET tipo_vagao = ? WHERE placa = ?';
 		db.run(update, [req.body.tipo_vagao, req.body.placa], (err) => {
 		  if (err) {
@@ -66,7 +65,7 @@ app.listen(port, hostname, () => {
 		  }
 		});	
 	 });
-	 app.delete('/deletarVagao', (req, res) => {
+	 app.delete('/deletarVagao', (req, res) => { // Aqui realizo a remoção de um vagão
 		const del = 'DELETE FROM vagao WHERE placa = ?';
 		db.run(del, [req.body.placa], (err) => {
 			if (err) {
@@ -77,7 +76,7 @@ app.listen(port, hostname, () => {
 		  }
 		});
 	  });
-	  app.post('/inserirChoque', (req, res) => { 
+	  app.post('/inserirChoque', (req, res) => { // Aqui realizo a inserção de um novo choque
 		const insert = 'INSERT INTO choque (id_choque, velocidade, pg, forca_maxima, act, placa, id_ponto, tipo_choque, hora, dia) VALUES (?,?,?,?,?,?,?,?,?,?)';
 		db.run(insert, [req.body.id_choque, req.body.velocidade, req.body.pg, req.body.forca_maxima, req.body.act, req.body.placa, req.body.id_ponto, req.body.tipo_choque, req.body.hora, req.body.dia], (err) => {
 		  if (err) {
@@ -88,7 +87,7 @@ app.listen(port, hostname, () => {
 		  }
 		});
 	  });
-	  app.get('/choques', (req, res) => {
+	  app.get('/choques', (req, res) => { // Aqui realizo a consulta para obter todos os choques
 		const get2 = 'SELECT * FROM choque ';
 		db.all(get2, [], (err, rows) => { 
 		  if (err) {
@@ -98,8 +97,8 @@ app.listen(port, hostname, () => {
 			
 			});
 		});
-		app.post('/choqueVagao', (req, res) => {
-			const select = 'SELECT * FROM choque WHERE placa = ?';
+		app.post('/choqueVagao', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir da placa de um vagão (tipo de filtragem)
+			const select = 'SELECT * FROM choque WHERE placa = ?'; 
 			db.all(select, [req.body.placa], (err, rows) => {
 				if (err) {
 					console.error(err.message);
