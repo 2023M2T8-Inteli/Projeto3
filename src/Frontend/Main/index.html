@@ -16,6 +16,9 @@
     crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 crossorigin=""></script>
+
+    <link  type="text/css" rel="stylesheet" href="style.css">
+
     <!--Título-->
     <title>Main</title>
   </head>
@@ -92,7 +95,7 @@ crossorigin=""></script>
 
     <div class="container">
       <div class="row mt-5 justify-content-center">
-        <div class="col-4">
+        <div class="col-md-4">
           <p
                 class="text-justify text-center me-3"
                 style="
@@ -103,78 +106,68 @@ crossorigin=""></script>
                   color: #3c3c3c;
                 "
               >
-                Aqui estão os pontos críticos, Valmir
+              <span class="name" style="color: #00bfff">Valmir</span>, filtre para ver os pontos críticos.
               </p>
         </div>
-
-
-
-
         <!--Campo de Teste-->
-        <div class="col-2">
+        <div class="col-md-2">
           <div class="form-outline">
-            <input type="text" id="placa" class="form-control form-control-lg" style="background: #FFFFFF;
+            <input type="text" id="placa" placeholder="Insira a placa" class="form-control form-control-lg" style="background: #FFFFFF;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 24px;"/>
           </div>
         </div>
-
-        <div class="col-1">
+        <div class="col-md-1">
           <button type="button" class="btn btn-info btn-lg" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           border-radius: 24px;" onclick="acharChoquePlaca()" >Buscar</button>
         </div>
-
-
-
-
-
-        <div class="col-2">
+        <div class="col-md-2">
           <div class="dropdown">
             <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: #FFFFFF;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 24px;">
-              Dropdown button
+              Qual viagem?
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#"></a></li>
+              <li><a class="dropdown-item" href="#"></a></li>
+              <li><a class="dropdown-item" href="#"></a></li>
             </ul>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
           <div class="dropdown">
             <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: #FFFFFF;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 24px;">
-              Dropdown button
+              Qual engate?
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Tipo E</a></li>
+              <li><a class="dropdown-item" href="#">Tipo F</a></li>
             </ul>
           </div>
         </div>
       </div>
+    </div>
 
-      <!--Mapa-->
-        <div class="col d-flex justify-content-evenly mt-5">
-          <div id="map" width="900px"
-          height="900px"
-          style="border-radius: 25px;
-          box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);"></div>
-        </div>
-
-      <!--Imagem do background-->
-        <div class="z-n1 bg-img position-absolute bottom-0 end-0">
-          <img
-            src="../static/grafismoMain.svg"
-            alt="Logo"
-            style="position: fixed; bottom: -200px; left: 0px"
-          />
-        </div>
+    <!--Mapa-->
+      <div class="col d-flex justify-content-evenly mt-5">
+        <div id="map" width="900px"
+        height="900px"
+        style="border-radius: 25px;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);"></div>
       </div>
+
+    <!--Imagem do background-->
+      <div class="z-n1 bg-img position-absolute bottom-0 end-0">
+        <img
+          src="../static/grafismoMain.svg"
+          alt="Logo"
+          style="position: fixed; bottom: -200px; left: 0px"
+        />
+      </div>
+    </div>
 
     
 
