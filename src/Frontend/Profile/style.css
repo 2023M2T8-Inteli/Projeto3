@@ -54,6 +54,12 @@ input {
 
 #user-image {
   position: relative;
-  left: 80px;
-  top: 40px;
+  width: 65%;
+  top: 70px;
+  left: 50px
+}
+
+.bold-text {
+  font-weight: bold;
+  font-size: 18px;
 }
