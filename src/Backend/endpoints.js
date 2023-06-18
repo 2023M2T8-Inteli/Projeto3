@@ -144,3 +144,18 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 				}
 			});
 		});
+		app.post('/choqueViagem', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de viagem (tipo de filtragem)
+			const select = 'SELECT * FROM choques WHERE tipo_viagem = ?';
+			db.all(select, [req.body.tipo_choque], (err, rows) => {
+				if (err) {
+					console.error(err.message);
+					} else {
+						if (rows.length > 0) {
+							console.log(rows);
+							res.status(200).json({rows});
+							} else {
+								res.status(401).json({ message: 'Não existem choques!' });
+							}
+						}
+					});
+				});
