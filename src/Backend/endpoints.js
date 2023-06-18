@@ -11,8 +11,8 @@ if (err){
 	console.log('Connected to the Database. ');
 }});
    
-app.use('/main', express.static("../frontend/Main"));
-app.use('/login', express.static("Frontend/Login"))
+app.use(express.static("../frontend/main"));
+
 
 app.use(express.json());
 app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servidor
@@ -100,7 +100,7 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 			});
 		});
 		app.post('/choqueVagao', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir da placa de um vagão (tipo de filtragem)
-			const select = 'SELECT * FROM choque WHERE placa = ?'; 
+			const select = 'SELECT * FROM choques WHERE placa = ?'; 
 			db.all(select, [req.body.placa], (err, rows) => {
 				if (err) {
 					console.error(err.message);
@@ -115,7 +115,7 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 			});
 		});
 		app.post('/choqueTipo', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de choque (tipo de filtragem)
-			const select = 'SELECT * FROM choque WHERE tipo_choque = ?';
+			const select = 'SELECT * FROM choques WHERE tipo_choque = ?';
 			db.all(select, [req.body.tipo_choque], (err, rows) => {
 				if (err) {
 					console.error(err.message);
@@ -124,7 +124,22 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 						console.log(rows);
 						res.status(200).json({rows});
 					} else {
-						res.status(401).json({ message: 'Login failed' });
+						res.status(401).json({ message: 'Não existem choques!' });
+					}
+				}
+			});
+		});
+		app.post('/choqueEngate', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de choque (tipo de filtragem)
+			const select = 'SELECT * FROM choques WHERE tipo_engate = ?';
+			db.all(select, [req.body.tipo_choque], (err, rows) => {
+				if (err) {
+					console.error(err.message);
+				} else {
+					if (rows.length > 0) {
+						console.log(rows);
+						res.status(200).json({rows});
+					} else {
+						res.status(401).json({ message: 'Não existem choques!' });
 					}
 				}
 			});
