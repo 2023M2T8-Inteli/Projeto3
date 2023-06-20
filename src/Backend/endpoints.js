@@ -59,9 +59,9 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 				}
 			});
 		});
-		app.post('/choqueEngate', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de choque (tipo de filtragem)
+		app.post('/choqueEngate', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de engate (tipo de filtragem)
 			const select = 'SELECT * FROM choques WHERE tipo_engate = ?';
-			db.all(select, [req.body.tipo_choque], (err, rows) => {
+			db.all(select, [req.body.tipo_engate], (err, rows) => {
 				if (err) {
 					console.error(err.message);
 				} else {
@@ -76,7 +76,7 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 		});
 		app.post('/choqueViagem', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de viagem (tipo de filtragem)
 			const select = 'SELECT * FROM choques WHERE tipo_viagem = ?';
-			db.all(select, [req.body.tipo_choque], (err, rows) => {
+			db.all(select, [req.body.viagem], (err, rows) => {
 				if (err) {
 					console.error(err.message);
 					} else {
@@ -116,7 +116,7 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 				});
 				app.post('/picoEngate', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de choque (tipo de filtragem)
 					const select = 'SELECT * FROM picos WHERE tipo_engate = ?';
-					db.all(select, [req.body.tipo_choque], (err, rows) => {
+					db.all(select, [req.body.tipo_engate], (err, rows) => {
 						if (err) {
 							console.error(err.message);
 						} else {
@@ -131,7 +131,7 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 				});
 				app.post('/picoViagem', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de viagem (tipo de filtragem)
 					const select = 'SELECT * FROM picos WHERE tipo_viagem = ?';
-					db.all(select, [req.body.tipo_choque], (err, rows) => {
+					db.all(select, [req.body.viagem], (err, rows) => {
 						if (err) {
 							console.error(err.message);
 							} else {
