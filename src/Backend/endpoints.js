@@ -12,7 +12,6 @@ if (err){
 }});
    
 app.use(express.static("../frontend/main"));
-app.use()
 
 
 app.use(express.json());
