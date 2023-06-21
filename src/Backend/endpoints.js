@@ -1,5 +1,6 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();  
+const path = require('path');
 const DBPATH = 'database.db';
 const app = express();
 const port = 9696;
@@ -11,9 +12,12 @@ if (err){
 	console.log('Connected to the Database. ');
 }});
    
-app.use(express.static("../src/Frontend/Main"));
+app.use(express.static("../Frontend")); 
 
-
+//crie um get que leve pra home.html
+app.get('/', (req, res) => {
+	res.sendFile(path.join(__dirname, '../Frontend/home.html'));
+});
 app.use(express.json());
 app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servidor
 	console.log(`Server listening on http://${hostname}:${port}/`);
@@ -75,7 +79,7 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 			});
 		});
 		app.post('/choqueViagem', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de viagem (tipo de filtragem)
-			const select = 'SELECT * FROM choques WHERE tipo_viagem = ?';
+			const select = 'SELECT * FROM choques WHERE viagem = ?';
 			db.all(select, [req.body.viagem], (err, rows) => {
 				if (err) {
 					console.error(err.message);
@@ -130,7 +134,7 @@ app.listen(port, hostname, () => { // Aqui estabeleço a ligação com o servido
 					});
 				});
 				app.post('/picoViagem', (req, res) => {  // Aqui realizo a consulta para obter todos os choques a partir do tipo de viagem (tipo de filtragem)
-					const select = 'SELECT * FROM picos WHERE tipo_viagem = ?';
+					const select = 'SELECT * FROM picos WHERE viagem = ?';
 					db.all(select, [req.body.viagem], (err, rows) => {
 						if (err) {
 							console.error(err.message);

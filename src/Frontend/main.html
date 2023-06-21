@@ -17,22 +17,22 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 crossorigin=""></script>
 
-  
+    <link  type="text/css" rel="stylesheet" href="main.css">
 
     <!--Título-->
     <title>Main</title>
   </head>
-  <body style="background: #f4f4f4; height: 100%;">
+  <body style="background: #f4f4f4">
     <!--Barra de navegação-->
     <nav class="navbar navbar-expand">
       <!--Logo-->
       <a
         class="navbar-brand"
-        href="../Home/index.html"
+        href="home.html"
       >
         <img
-          class="w-50 mt-2 ms-5"
-          src= "../static/logo_azul2.svg"
+          class="logo w-50 mt-2 ms-5"
+          src= "imagens/logo_azul2.svg"
           alt="logo"
           style="width: 200px"
         />
@@ -42,8 +42,8 @@ crossorigin=""></script>
           <!--Botão do Relatório-->
           <li class="nav-item me-5">
             <button
-              onclick="location.href='../Document/index.html'"
-              class="nav-link"
+              onclick="location.href='relatorio.html'"
+              class="logo nav-link"
               style="
                 font-style: normal;
                 font-weight: 500;
@@ -59,8 +59,8 @@ crossorigin=""></script>
           <!--Botão do Perfil-->
           <li class="nav-item me-5">
             <button
-              onclick="location.href='../Profile/index.html'"
-              class="nav-link"
+              onclick="location.href='profile.html'"
+              class="logo nav-link"
               style="
                 font-style: normal;
                 font-weight: 500;
@@ -76,8 +76,8 @@ crossorigin=""></script>
           <!--Botão de Home-->
           <li class="nav-item me-5">
             <button
-              onclick="location.href='../Home/index.html'"
-              class="nav-link"
+              onclick="location.href='home.html'"
+              class="logo nav-link"
               style="
                 font-style: normal;
                 font-weight: 500;
@@ -110,7 +110,7 @@ crossorigin=""></script>
               </p>
               <div class="row">
                 <div class="form-outline">
-                    <input type="text" id="placa" placeholder="Insira a placa" class="form-control form-control-lg text-center w-100 mt-4" style="background: #FFFFFF;
+                    <input type="text" id="placa" placeholder="Insira a placa" class="btn-1 form-control form-control-lg text-center w-100 mt-4" style="background: #FFFFFF;
                     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                     border-radius: 24px;"/>
                   </div>
@@ -119,33 +119,35 @@ crossorigin=""></script>
               
               <div class="row">
                 <div class="dropdown">
-                  <button class="btn btn-light btn-lg dropdown-toggle w-100 mt-4" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: #FFFFFF;
+                  <button class="btn btn-1 btn-light btn-lg dropdown-toggle w-100 mt-4" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: #FFFFFF;
                   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                   border-radius: 24px;">
                     Qual viagem?
                   </button>
                   <ul class="dropdown-menu w-100">
-                    <li><a class="dropdown-item" href="#"></a></li>
-                    <li><a class="dropdown-item" href="#"></a></li>
-                    <li><a class="dropdown-item" href="#"></a></li>
+                    <li><a class="dropdown-item" href="#" onclick="v1()">1</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="v2()">2</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="v3()">3</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="v4()">4</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="v5()">5</a></li>
                   </ul>
                 </div>
               </div>
               <div class="row">
                 <div class="dropdown">
-                  <button class="btn btn-light btn-lg dropdown-toggle w-100 mt-4" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: #FFFFFF;
+                  <button class="btn btn-1 btn-light btn-lg dropdown-toggle w-100 mt-4" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: #FFFFFF;
                   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                   border-radius: 24px;">
                     Qual engate?
                   </button>
                   <ul class="dropdown-menu w-100">
-                    <li><a class="dropdown-item" href="#">Tipo E</a></li>
-                    <li><a class="dropdown-item" href="#">Tipo F</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="engateE()">Tipo E</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="engateF()">Tipo F</a></li>
                   </ul>
                 </div>
               </div>
               <div class="row">
-                <button type="button" class="btn btn-info btn-lg w-100 mt-4" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                <button type="button" class="btn btn-2 btn-info btn-lg w-100 mt-4" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 border-radius: 24px;" onclick="acharChoquePlaca()" >Buscar</button>
               </div>
         </div>
@@ -179,12 +181,6 @@ crossorigin=""></script>
           }
           </style>
       
-          <div id="map">
-            <script>
-             var map = L.map('map').setView([-23.55328950619795, -46.73408531940422], 13);
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
-          L.marker([-23.55328950619795, -46.73408531940422]).addTo(map) .bindPopup('Inteli')
-            </script>
              <script src="script.js"></script>
           </div>
         <!--Campo de Teste-->
@@ -193,7 +189,7 @@ crossorigin=""></script>
     <!--Imagem do background-->
     <div class="z-n1 bg-img position-absolute bottom-0 end-0">
       <img
-        src="../static/grafismoMain.svg"
+        src="imagens/grafismoMain.svg"
         alt="Logo"
         style="position: fixed; bottom: -200px; left: 0px"
       />
@@ -208,3 +204,5 @@ crossorigin=""></script>
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"
   ></script>
+
+    

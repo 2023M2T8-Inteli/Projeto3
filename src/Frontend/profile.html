@@ -5,7 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!--Incluindo stylesheet-->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="profile.css" />
 
     <!--Incluindo bootstrap-->
     <link
@@ -25,11 +25,11 @@
       <!--Logo-->
       <a
         class="navbar-brand"
-        href="../Home/index.html"
+        href="home.html"
       >
         <img
-          class="w-50 mt-2 ms-5"
-          src="../static/logo_azul2.svg"
+          class="logo w-50 mt-2 ms-5"
+          src="imagens/logo_azul2.svg"
           alt="logo"
           style="width: 200px"
         />
@@ -38,8 +38,8 @@
         <ul class="navbar-nav">
           <li class="nav-item me-5">
             <button
-              onclick="location.href='../Home/index.html'"
-              class="nav-link"
+              onclick="location.href='home.html'"
+              class="logo nav-link"
               style="
                 font-style: normal;
                 font-weight: 500;
@@ -64,7 +64,7 @@
           <img
             class="circular-shape"
             id="user-image"
-            src="../static/Valmir.svg"
+            src="imagens/Valmir.svg"
             alt="Imagem do usuário"
           />
         </div>
@@ -108,7 +108,7 @@
               </div>
 
               <div class="col-4">
-                <label for="registro" class="fw-semibold" style="color:white">Registro</label>
+                <label for="registro" class="fw-semibold" style="color:black">Registro</label>
                 <input
                   type="text"
                   id="registro"
@@ -145,7 +145,7 @@
             <div class="row">
               <div class="col-3">
                 <input
-                  class="mt-4"
+                  class="btn-2 mt-4"
                   type="submit"
                   value="Logout"
                   style="background: #2f5695; border-radius: 24px"
@@ -161,7 +161,7 @@
     <container-fluid>
       <div class="z-n1 bg-img position-absolute bottom-0 end-0">
         <img
-          src="../static/grafismoPerfil.svg"
+          src="imagens/grafismoPerfil.svg"
           alt="Logo"
           style="position: fixed; height: 600px; bottom: 0px; right: 0px"
         />
