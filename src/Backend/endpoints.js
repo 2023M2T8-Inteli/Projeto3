@@ -11,7 +11,7 @@ if (err){
 	console.log('Connected to the Database. ');
 }});
    
-app.use(express.static("../frontend/main"));
+app.use(express.static("../src/Frontend/Main"));
 
 
 app.use(express.json());
