@@ -12,10 +12,10 @@
 - <a href="https://www.linkedin.com/in/pedro-henrique-cruz-178a62227/">Pedro Cruz</a>
 - <a href="https://www.linkedin.com/in/enzo-boccia-pagliara-30379a267/">Enzo Boccia</a>
 - <a href="https://www.linkedin.com/in/sophianobrega/">Sophia Nóbrega</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Ólin Costa</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 5</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 6</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 7</a>
+- <a href="https://www.linkedin.com/in/%C3%B3lin-medeiros-costa-b0a1b426a/">Ólin Costa</a> 
+- <a href="https://www.linkedin.com/in/victorbarq/">Clara Mohammad</a>
+- <a href="https://www.linkedin.com/in/victorbarq/">João Paulo da Silva</a> 
+- <a href="https://www.linkedin.com/in/victorbarq/">Daniel Mendez</a>
 
 ## 📝 Descrição
 
