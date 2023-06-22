@@ -1,15 +1,20 @@
-var mymap = L.map('map').setView([-23.555797392918087, -46.73375273135423], 13); // Inicializa o mapa com um ponto inicial
+var mymap = L.map('map').setView([-23.555797392918087, -46.73375273135423], 13); 
+// Inicializa o mapa com um ponto inicial
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
 }).addTo(mymap);
 
 var markers = [];
-function acharChoquePlaca() { //Aqui reconheço um elemento no HTML para realizar a consulta de choque por placa do vagão
+//Array para armazenar os marcadores no mapa
+
+function acharChoquePlaca() { 
+//Reconhece um elemento no HTML para realizar a consulta de choque por placa do vagão
     var user = {
         placa: document.getElementById('placa').value,
     }
     fetch('http://localhost:9696/choqueVagao', {
+    //Realiza a consulta de choque por placa do vagão
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -20,11 +25,16 @@ function acharChoquePlaca() { //Aqui reconheço um elemento no HTML para realiza
         .then(data => {
             markers.forEach(marker => mymap.removeLayer(marker));
             markers = [];
+            //Remove os marcadores existentes no mapa
+
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -51,10 +61,12 @@ function acharChoquePlaca() { //Aqui reconheço um elemento no HTML para realiza
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
     fetch('http://localhost:9696/picoVagao', {
+    //Realiza a consulta de pico por placa do vagão
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -64,10 +76,13 @@ function acharChoquePlaca() { //Aqui reconheço um elemento no HTML para realiza
         .then(response => response.json())
         .then(data => {
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -94,16 +109,19 @@ function acharChoquePlaca() { //Aqui reconheço um elemento no HTML para realiza
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
 }
 
 function engateE() {
+//Função para buscar choques do engate E
     var user = {
         tipo_engate: 'E',
     }
     fetch('http://localhost:9696/choqueEngate', {
+    //Realiza a consulta de choque por tipo de engate
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -114,11 +132,16 @@ function engateE() {
         .then(data => {
             markers.forEach(marker => mymap.removeLayer(marker));
             markers = [];
+            //Remove os marcadores existentes do mapa
+
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay;
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -145,10 +168,12 @@ function engateE() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
     fetch('http://localhost:9696/picoEngate', {
+    //Realiza a consulta de pico por tipo de engate
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -158,10 +183,13 @@ function engateE() {
         .then(response => response.json())
         .then(data => {
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -188,16 +216,19 @@ function engateE() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);   
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
 }
 
 function engateF() {
+//Função para buscar choques do engate F
     var user = {
         tipo_engate: 'F',
     }
     fetch('http://localhost:9696/choqueEngate', {
+    //Realiza a consulta de choques por tipo de engate
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -208,11 +239,16 @@ function engateF() {
         .then(data => {
             markers.forEach(marker => mymap.removeLayer(marker));
             markers = [];
+            //Remove os marcadores existentes do mapa
+
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -239,10 +275,12 @@ function engateF() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
     fetch('http://localhost:9696/picoEngate', {
+    //Realiza a consulta de picos por tipo de engate
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -252,10 +290,13 @@ function engateF() {
         .then(response => response.json())
         .then(data => {
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -282,16 +323,19 @@ function engateF() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
 }
 
 function v1() {
+//Função para buscar choques da viagem 1
     let user = {
         viagem: 1
     }
     fetch('http://localhost:9696/choqueViagem', {
+    //Realiza a consulta de choques por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -302,11 +346,16 @@ function v1() {
         .then(data => {
             markers.forEach(marker => mymap.removeLayer(marker));
             markers = [];
+            //Remove os marcadores existentes do mapa
+
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -333,10 +382,12 @@ function v1() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
     fetch('http://localhost:9696/picoViagem', {
+    //Realiza a consulta de picos por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -346,10 +397,13 @@ function v1() {
         .then(response => response.json())
         .then(data => {
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -376,16 +430,19 @@ function v1() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
 }
 
 function v2() {
+//Função para buscar choques da viagem 2
     let user = {
         viagem: 2
     }
     fetch('http://localhost:9696/choqueViagem', {
+    //Realiza a consulta de choques por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -396,11 +453,16 @@ function v2() {
         .then(data => {
             markers.forEach(marker => mymap.removeLayer(marker));
             markers = [];
+            //Remove todos os marcadores do mapa
+
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
                 var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -427,10 +489,12 @@ function v2() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
     fetch('http://localhost:9696/picoViagem', {
+    //Realiza a consulta de picos por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -440,10 +504,13 @@ function v2() {
         .then(response => response.json())
         .then(data => {
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -470,16 +537,19 @@ function v2() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
 }
 
 function v3() {
+//Função para buscar choques da viagem 3
     let user = {
         viagem: 3
     }
     fetch('http://localhost:9696/choqueViagem', {
+    //Realiza a consulta de choques por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -490,11 +560,16 @@ function v3() {
         .then(data => {
             markers.forEach(marker => mymap.removeLayer(marker));
             markers = [];
+            //Remove todos os marcadores do mapa
+
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -521,10 +596,12 @@ function v3() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
     fetch('http://localhost:9696/picoViagem', {
+    //Realiza a consulta de picos por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -534,10 +611,13 @@ function v3() {
         .then(response => response.json())
         .then(data => {
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -564,16 +644,19 @@ function v3() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
 }
 
 function v4() {
+//Função para buscar choques da viagem 4
     let user = {
         viagem: 4
     }
     fetch('http://localhost:9696/choqueViagem', {
+    //Realiza a consulta de choques por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -584,11 +667,16 @@ function v4() {
         .then(data => {
             markers.forEach(marker => mymap.removeLayer(marker));
             markers = [];
+            //Remove todos os marcadores do mapa
+
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -615,10 +703,12 @@ function v4() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
     fetch('http://localhost:9696/picoViagem', {
+    //Realiza a consulta de picos por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -628,10 +718,13 @@ function v4() {
         .then(response => response.json())
         .then(data => {
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -658,16 +751,19 @@ function v4() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
 }
 
 function v5() {
+//Função para buscar choques da viagem 5
     let user = {
         viagem: 5
     }
     fetch('http://localhost:9696/choqueViagem', {
+    //Realiza a consulta de choques por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -678,11 +774,16 @@ function v5() {
         .then(data => {
             markers.forEach(marker => mymap.removeLayer(marker));
             markers = [];
+            //Remove todos os marcadores do mapa
+
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -709,10 +810,12 @@ function v5() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
     fetch('http://localhost:9696/picoViagem', {
+    //Realiza a consulta de picos por viagem
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
@@ -722,10 +825,13 @@ function v5() {
         .then(response => response.json())
         .then(data => {
             data.rows.forEach(item => {
+            //Converte o valor da data e hora
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+                //Número de milissegundos em um dia
                 var baseDate = new Date('1900-01-01');
-                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
+                var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; 
+                //Subtrai 1 para ajustar a data base do Excel
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
                 var formattedDateTime = dateValue.toLocaleString('en-US', {
                     dateStyle: 'short',
@@ -752,6 +858,7 @@ function v5() {
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
                 markers.push(marker);
+                //Cria marcadores no mapa com base nos dados retornados e os adiciona à lista de marcadores
             });
         })
         .catch(err => console.log(err));
