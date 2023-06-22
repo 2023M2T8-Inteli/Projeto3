@@ -4,11 +4,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
 }).addTo(mymap);
 
-function limparMapa(mymap) {
-    var markerGroup = L.layerGroup().addTo(mymap);
-    markerGroup.clearLayers();
-}
-
+var markers = [];
 function acharChoquePlaca() { //Aqui reconheço um elemento no HTML para realizar a consulta de choque por placa do vagão
     var user = {
         placa: document.getElementById('placa').value,
@@ -22,6 +18,8 @@ function acharChoquePlaca() { //Aqui reconheço um elemento no HTML para realiza
         })
         .then(response => response.json())
         .then(data => {
+            markers.forEach(marker => mymap.removeLayer(marker));
+            markers = [];
             data.rows.forEach(item => {
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
                 var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
@@ -52,6 +50,7 @@ function acharChoquePlaca() { //Aqui reconheço um elemento no HTML para realiza
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -94,6 +93,7 @@ function acharChoquePlaca() { //Aqui reconheço um elemento no HTML para realiza
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -112,6 +112,8 @@ function engateE() {
         })
         .then(response => response.json())
         .then(data => {
+            markers.forEach(marker => mymap.removeLayer(marker));
+            markers = [];
             data.rows.forEach(item => {
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
                 var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
@@ -142,6 +144,7 @@ function engateE() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -184,6 +187,7 @@ function engateE() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);   
             });
         })
         .catch(err => console.log(err));
@@ -202,6 +206,8 @@ function engateF() {
         })
         .then(response => response.json())
         .then(data => {
+            markers.forEach(marker => mymap.removeLayer(marker));
+            markers = [];
             data.rows.forEach(item => {
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
                 var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
@@ -232,6 +238,7 @@ function engateF() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -274,6 +281,7 @@ function engateF() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -292,6 +300,8 @@ function v1() {
         })
         .then(response => response.json())
         .then(data => {
+            markers.forEach(marker => mymap.removeLayer(marker));
+            markers = [];
             data.rows.forEach(item => {
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
                 var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
@@ -322,6 +332,7 @@ function v1() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -364,6 +375,7 @@ function v1() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -382,6 +394,8 @@ function v2() {
         })
         .then(response => response.json())
         .then(data => {
+            markers.forEach(marker => mymap.removeLayer(marker));
+            markers = [];
             data.rows.forEach(item => {
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
                 var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
@@ -412,6 +426,7 @@ function v2() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -454,6 +469,7 @@ function v2() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -473,6 +489,8 @@ function v3() {
         })
         .then(response => response.json())
         .then(data => {
+            markers.forEach(marker => mymap.removeLayer(marker));
+            markers = [];
             data.rows.forEach(item => {
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
                 var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
@@ -503,6 +521,7 @@ function v3() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -545,6 +564,7 @@ function v3() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -564,6 +584,8 @@ function v4() {
         })
         .then(response => response.json())
         .then(data => {
+            markers.forEach(marker => mymap.removeLayer(marker));
+            markers = [];
             data.rows.forEach(item => {
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
                 var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
@@ -594,6 +616,7 @@ function v4() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -636,6 +659,7 @@ function v4() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -654,6 +678,8 @@ function v5() {
         })
         .then(response => response.json())
         .then(data => {
+            markers.forEach(marker => mymap.removeLayer(marker));
+            markers = [];
             data.rows.forEach(item => {
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
                 var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
@@ -684,6 +710,7 @@ function v5() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
@@ -726,6 +753,7 @@ function v5() {
                     .addTo(mymap);
                 marker.bindPopup(popupContent);
                 marker.on('click', () => marker.openPopup());
+                markers.push(marker);
             });
         })
         .catch(err => console.log(err));
