@@ -35,7 +35,12 @@ O IPT possui uma área de pesquisa voltada para ferrovias, a qual realiza um pro
 Portanto, o objetivo central do projeto é criar uma aplicação que forneça informações sobre eventos registrados em determinados trajetos ferroviários, enfatizando pontos críticos e essenciais, tornando mais fácil o acesso e interpretação das informações. Portanto, será dividido em duas vertentes: uma com foco macro visando atingir pessoas não técnicas e outra direcionada a pessoas mais técnicas. 
 
 ## 📝Link
-Clique [AQUI]("https://k36w85-9696.csb.app/") para ver o projeto rodando 
+Clique ![AQUI]("https://k36w85-9696.csb.app/") para ver o projeto rodando 
+
+## 📷 Vídeo Demonstrativo do Site
+Clique ![AQUI]("https://youtu.be/5rOw1CKGOFk") para ver o vídeo tuturial do nosso projeto
+
+
 
 ## 📁 Estrutura de pastas
 
