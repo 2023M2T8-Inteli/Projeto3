@@ -14,4 +14,7 @@
 	.logo {
 		transition: .6s all;
 	}
+	.img-1 {
+		transform: scale(0.3);
+	}
     
