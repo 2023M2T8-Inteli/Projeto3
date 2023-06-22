@@ -14,7 +14,7 @@ if (err){
    
 app.use(express.static("../Frontend")); 
 
-//crie um get que leve pra home.html
+//endpoint que leva para home.html
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../Frontend/home.html'));
 });
