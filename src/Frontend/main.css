@@ -1,4 +1,4 @@
-.btn-1:hover {
+    .btn-1:hover {
     background-color: #c0c0c0 !important;
 
     }
@@ -16,7 +16,7 @@
     }
 
     .logo:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
   
     .logo {
