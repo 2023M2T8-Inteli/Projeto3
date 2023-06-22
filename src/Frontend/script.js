@@ -398,7 +398,7 @@ function v2() {
             markers = [];
             data.rows.forEach(item => {
                 var excelTimeValue = parseFloat(item.datahora.replace(',', '.'));
-                var millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+                var millisecondsPerDay = 24 * 60 * 60 * 1000; 
                 var baseDate = new Date('1900-01-01');
                 var milliseconds = (excelTimeValue - 1) * millisecondsPerDay; // Subtract 1 to adjust for Excel's base date
                 var dateValue = new Date(baseDate.getTime() + milliseconds);
