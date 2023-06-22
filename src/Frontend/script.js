@@ -476,7 +476,6 @@ function v2() {
 }
 
 function v3() {
-    console.log('tekke in die fresse')
     let user = {
         viagem: 3
     }
@@ -571,7 +570,6 @@ function v3() {
 }
 
 function v4() {
-    console.log('tekke in die fresse')
     let user = {
         viagem: 4
     }
